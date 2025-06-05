@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Praktikan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #48bb78;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .btn:hover {
+            background: #38a169;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #edf2f7;
+            color: #4a5568;
+        }
+        tr:hover {
+            background-color: #f7fafc;
+        }
+        a {
+            color: #3182ce;
+            text-decoration: none;
+        }
+
+        a.edit {
+            color:rgb(209, 216, 0);
+        }
+
+        a.hapus {
+            color: #e53e3e;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Data Praktikan</h2>
+    <a href="/tambah" class="btn">+ Tambah Data</a>
+    <table>
+        <tr>
+            <th>No</th><th>NPM</th><th>Nama</th><th>Kelas</th>
+            <th>Kehadiran</th><th>LP</th><th>LA</th><th>Ujian</th><th>Aksi</th>
+        </tr>
+        {% for d in data %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ d['npm'] }}</td>
+            <td>{{ d['nama'] }}</td>
+            <td>{{ d['kelas'] }}</td>
+            <td>{{ d['kehadiran'] }}</td>
+            <td>{{ d['lp'] }}</td>
+            <td>{{ d['la'] }}</td>
+            <td>{{ d['ujian'] }}</td>
+            <td>
+                <a href="/edit/{{ d['id'] }}" class="edit">Edit</a> |
+                <a href="/hapus/{{ d['id'] }}" class="hapus" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
